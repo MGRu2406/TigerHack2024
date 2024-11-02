@@ -3,41 +3,42 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="freeCodeCamp Accessibility Quiz practice project" />
-    <title>Accessibility Quiz</title>
+    <meta name="description" content="Agriculture Quiz Practice Project" />
+    <title>Agriculture Quiz</title>
     <link rel="stylesheet" href="survey.css" />
     <script>
       function Grade() {
         const correctAnswers = {
-          q1: "A", // Question 1: 10,000 years ago
-          q2: "D", // Question 2: Southwest Asia
-          q3: "B", // Question 3: Plantation
-          q4: "A", // Question 4: Mediterranean
-          q5: "B"  // Question 5: Urban sprawl
+          q1: "A", // 10,000 years ago
+          q2: "D", // Southwest Asia
+          q3: "B", // Plantation
+          q4: "A", // Mediterranean
+          q5: "B", // Urban sprawl
+          q6: "C", // Setting up traps or barriers
+          q7: "C", // Physical/environmental modificaiton
+          q8: "D", // Biological control
+          q9: "C", // Exclusion
+          q10: "C" // Alter the environment to make it less hospitable for pests
         };
 
         let score = 0;
-        let grade = 0;
-        let totalQuestions = 5;
+        let totalQuestions = 10;
         let feedback = "";
 
-        // Loop through each question, check if the selected answer is correct
         for (let question in correctAnswers) {
           let selected = document.querySelector(`input[name="${question}"]:checked`);
           if (selected) {
             if (selected.value === correctAnswers[question]) {
               score++;
               feedback += `Question ${question.slice(1)}: Correct!<br>`;
-              score + 10;
             } else {
-              feedback += `Question ${question.slice(1)}: Incorrect. Correct answer is ${correctAnswers[question]}.<br>`;
+              feedback += `Question ${question.slice(1)}: Incorrect. Correct answer is "${correctAnswers[question]}".<br>`;
             }
           } else {
-            feedback += `Question ${question.slice(1)}: No answer selected. Correct answer is ${correctAnswers[question]}.<br>`;
+            feedback += `Question ${question.slice(1)}: No answer selected. Correct answer is "${correctAnswers[question]}".<br>`;
           }
         }
-        
-        // Display the score and feedback
+
         document.getElementById("answer-display").innerHTML = `You scored ${score} out of ${totalQuestions}.<br><br>${feedback}`;
       }
     </script>
@@ -45,7 +46,7 @@
   <body>
     <div class="content-wrapper">
       <header>
-        <img id="logo" alt="freeCodeCamp" src="https://cdn.freecodecamp.org/platform/universal/fcc_primary.svg">
+        <img id="logo" alt="Agriculture Quiz Logo" src="https://example.com/logo.svg" />
         <h1>Agriculture Quiz!</h1>
         <nav>
           <ul>
@@ -55,73 +56,360 @@
         </nav>
       </header>
       <main>
-        <form method="post" action="https://freecodecamp.org/practice-project/accessibility-quiz">
+        <form method="post" action="https://example.com/agriculture-quiz">
           <section role="region" aria-labelledby="questions">
             <h2 id="questions">Questions</h2>
+            
             <!-- Question 1 -->
             <div class="question-block">
-              <h3>Question 1</h3>
-              <fieldset>
+              <h3><span class="sr-only">Question</span>1</h3>
+              <fieldset class="question" name="html-question-one">
                 <legend>The earliest known domesticated wheat, barley, and rice crops are thought to have originated in Asia?</legend>
-                <ul>
-                  <li><label><input type="radio" name="q1" value="A" /> A. 10,000 years ago</label></li>
-                  <li><label><input type="radio" name="q1" value="B" /> B. 100,000 years ago</label></li>
-                  <li><label><input type="radio" name="q1" value="C" /> C. 1.1 million years ago</label></li>
-                  <li><label><input type="radio" name="q1" value="D" /> D. 1,000 years ago</label></li>
+                <ul class="answers-list">
+                  <li>
+                    <label for="q1-a1">
+                      <input type="radio" id="q1-a1" name="q1" value="A" />
+                      A. 10,000 years ago
+                    </label>
+                  </li>
+                  <li>
+                    <label for="q1-a2">
+                      <input type="radio" id="q1-a2" name="q1" value="B" />
+                      B. 100,000 years ago
+                    </label>
+                  </li>
+                  <li>
+                    <label for="q1-a3">
+                      <input type="radio" id="q1-a3" name="q1" value="C" />
+                      C. 1.1 million years ago
+                    </label>
+                  </li>
+                  <li>
+                    <label for="q1-a4">
+                      <input type="radio" id="q1-a4" name="q1" value="D" />
+                      D. 1,000 years ago
+                    </label>
+                  </li>
                 </ul>
               </fieldset>
             </div>
-            <!-- Question 2 -->
             <div class="question-block">
-              <h3>Question 2</h3>
-              <fieldset>
-                <legend>Seed agriculture probably reached Europe from?</legend>
-                <ul>
-                  <li><label><input type="radio" name="q2" value="A" /> A. Western India</label></li>
-                  <li><label><input type="radio" name="q2" value="B" /> B. Northern China</label></li>
-                  <li><label><input type="radio" name="q2" value="C" /> C. Ethiopia</label></li>
-                  <li><label><input type="radio" name="q2" value="D" /> D. Southwest Asia</label></li>
-                </ul>
-              </fieldset>
-            </div>
-            <!-- Question 3 -->
-            <div class="question-block">
-              <h3>Question 3</h3>
-              <fieldset>
-                <legend>Which type of agriculture is found primarily in less developed countries?</legend>
-                <ul>
-                  <li><label><input type="radio" name="q3" value="A" /> A. Mediterranean</label></li>
-                  <li><label><input type="radio" name="q3" value="B" /> B. Plantation</label></li>
-                  <li><label><input type="radio" name="q3" value="C" /> C. Truck farming</label></li>
-                  <li><label><input type="radio" name="q3" value="D" /> D. Commercial gardening</label></li>
-                </ul>
-              </fieldset>
-            </div>
-            <!-- Question 4 -->
-            <div class="question-block">
-              <h3>Question 4</h3>
-              <fieldset>
-                <legend>Which is not a form of subsistence agriculture?</legend>
-                <ul>
-                  <li><label><input type="radio" name="q4" value="A" /> A. Mediterranean</label></li>
-                  <li><label><input type="radio" name="q4" value="B" /> B. Shifting cultivation</label></li>
-                  <li><label><input type="radio" name="q4" value="C" /> C. Pastoral nomadism</label></li>
-                  <li><label><input type="radio" name="q4" value="D" /> D. Intensive</label></li>
-                </ul>
-              </fieldset>
-            </div>
-            <!-- Question 5 -->
-            <div class="question-block">
-              <h3>Question 5</h3>
-              <fieldset>
-                <legend>The decline in the amount of farmland can best be described as a consequence of?</legend>
-                <ul>
-                  <li><label><input type="radio" name="q5" value="A" /> A. Push/pull economic factors</label></li>
-                  <li><label><input type="radio" name="q5" value="B" /> B. Urban sprawl</label></li>
-                  <li><label><input type="radio" name="q5" value="C" /> C. Climate change</label></li>
-                  <li><label><input type="radio" name="q5" value="D" /> D. Demographic transition</label></li>
-                </ul>
-              </fieldset>
+                <h3><span class="sr-only">Question</span>2</h3>
+                <fieldset class="question" name="html-question-one">
+                  <legend>
+                    Seed agriculture probably reached Europe from?
+                  </legend>
+                  <ul class="answers-list">
+                    <li>
+                      <label for="q2-a1">
+                        <input type="radio" id="q1-a1" name="q1" value="A" />
+                        A. Western India
+                      </label>
+                    </li>
+                    <li>
+                      <label for="q2-a2">
+                        <input type="radio" id="q2-a2" name="q2" value="B" />
+                        B. Northern China
+                      </label>
+                    </li>
+                    <li>
+                      <label for="q2-a3">
+                        <input type="radio" id="q2-a3" name="q1" value="C" />
+                        C. Ethiopia
+                      </label>
+                    </li>
+                    <li>
+                      <label for="q2-a4">
+                        <input type="radio" id="q2-a4" name="q2" value="D" />
+                        D. Southwest Asia
+                      </label>
+                    </li>
+                  </ul>
+                </fieldset>
+              </div>
+              <div class="question-block">
+                <h3><span class="sr-only">Question</span>3</h3>
+                <fieldset class="question" name="html-question-one">
+                  <legend>
+                    Which type of agriculture is found primarily in less developed countries?
+                </legend>
+                  <ul class="answers-list">
+                    <li>
+                      <label for="q3-a1">
+                        <input type="radio" id="q3-a1" name="q3" value="A" />
+                        A. Mediterranean
+                      </label>
+                    </li>
+                    <li>
+                      <label for="q3-a2">
+                        <input type="radio" id="q3-a2" name="q3" value="B" />
+                        B. Planation
+                      </label>
+                    </li>
+                    <li>
+                      <label for="q3-a3">
+                        <input type="radio" id="q3-a3" name="q3" value="C" />
+                        C. Truck farming
+                      </label>
+                    </li>
+                    <li>
+                      <label for="q3-a4">
+                        <input type="radio" id="q3-a4" name="q3" value="D" />
+                        D. Commercial gardening
+                      </label>
+                    </li>
+                  </ul>
+                </fieldset>
+              </div>
+              <div class="question-block">
+                <h3><span class="sr-only">Question</span>4</h3>
+                <fieldset class="question" name="html-question-one">
+                  <legend>
+                    Which is not a form of subsistence agriculture?
+                </legend>
+                  <ul class="answers-list">
+                    <li>
+                      <label for="q4-a1">
+                        <input type="radio" id="q4-a1" name="q4" value="A" />
+                        A. Mediterranean
+                      </label>
+                    </li>
+                    <li>
+                      <label for="q4-a2">
+                        <input type="radio" id="q4-a2" name="q4" value="B" />
+                        B. Shifting cultivation
+                      </label>
+                    </li>
+                    <li>
+                      <label for="q4-a3">
+                        <input type="radio" id="q4-a3" name="q4" value="C" />
+                        C. Pastoral nomadism
+                      </label>
+                    </li>
+                    <li>
+                      <label for="q4-a4">
+                        <input type="radio" id="q4-a4" name="q4" value="D" />
+                        D. Intensive
+                      </label>
+                    </li>
+                  </ul>
+                </fieldset>
+              </div>
+              <div class="question-block">
+                <h3><span class="sr-only">Question</span>5</h3>
+                <fieldset class="question" name="html-question-one">
+                  <legend>
+                    Which type of agriculture is found primarily in less developed countries?
+                </legend>
+                  <ul class="answers-list">
+                    <li>
+                      <label for="q5-a1">
+                        <input type="radio" id="q5-a1" name="q5" value="A" />
+                        A. Push/pull ecomonic factors
+                      </label>
+                    </li>
+                    <li>
+                      <label for="q5-a2">
+                        <input type="radio" id="q5-a2" name="q5" value="B" />
+                        B. Urban sprawl
+                      </label>
+                    </li>
+                    <li>
+                      <label for="q5-a3">
+                        <input type="radio" id="q5-a3" name="q5" value="C" />
+                        C. Climate change
+                      </label>
+                    </li>
+                    <li>
+                      <label for="q5-a4">
+                        <input type="radio" id="q5-a4" name="q5" value="D" />
+                        D. Demographic transition
+                      </label>
+                    </li>
+                  </ul>
+                </fieldset>
+              </div>
+              <div class="question-block">
+                <h3><span class="sr-only">Question</span>6</h3>
+                <fieldset class="question" name="html-question-one">
+                  <legend>
+                    Which of the following is an example of physical or mechanical pest management?
+                </legend>
+                  <ul class="answers-list">
+                    <li>
+                      <label for="q6-a1">
+                        <input type="radio" id="q6-a1" name="q6" value="A" />
+                        A. Applying chemical pesticides
+                      </label>
+                    </li>
+                    <li>
+                      <label for="q6-a2">
+                        <input type="radio" id="q6-a2" name="q6" value="B" />
+                        B. Using predator insects
+                      </label>
+                    </li>
+                    <li>
+                      <label for="q6-a3">
+                        <input type="radio" id="q6-a3" name="q6" value="C" />
+                        C. Setting up traps or barriers
+                      </label>
+                    </li>
+                    <li>
+                      <label for="q6-a4">
+                        <input type="radio" id="q6-a4" name="q6" value="D" />
+                        D. Modifying the environment
+                      </label>
+                    </li>
+                  </ul>
+                </fieldset>
+              </div>
+              <div class="question-block">
+                <h3><span class="sr-only">Question</span>7</h3>
+                <fieldset class="question" name="html-question-one">
+                  <legend>
+                    Lowering humidity to reduce pest reproduction rates is an example of?
+                </legend>
+                  <ul class="answers-list">
+                    <li>
+                      <label for="q7-a1">
+                        <input type="radio" id="q7-a1" name="q7" value="A" />
+                        A. Biological control
+                      </label>
+                    </li>
+                    <li>
+                      <label for="q7-a2">
+                        <input type="radio" id="q7-a2" name="q7" value="B" />
+                        B. Cultural practices
+                      </label>
+                    </li>
+                    <li>
+                      <label for="q7-a3">
+                        <input type="radio" id="q7-a3" name="q7" value="C" />
+                        C. Physical/environmental modification
+                      </label>
+                    </li>
+                    <li>
+                      <label for="q7-a4">
+                        <input type="radio" id="q7-a4" name="q7" value="D" />
+                        D. Chemical contorl
+                      </label>
+                    </li>
+                  </ul>
+                </fieldset>
+              </div>
+              <div class="question-block">
+                <h3><span class="sr-only">Question</span>8</h3>
+                <fieldset class="question" name="html-question-one">
+                  <legend>
+                    Modifying the environment to enhance natural enemies of pests is an example of which type of control?
+                </legend>
+                  <ul class="answers-list">
+                    <li>
+                      <label for="q8-a1">
+                        <input type="radio" id="q8-a1" name="q8" value="A" />
+                        A. Cultural control
+                      </label>
+                    </li>
+                    <li>
+                      <label for="q8-a2">
+                        <input type="radio" id="q8-a2" name="q8" value="B" />
+                        B. Chemical control
+                      </label>
+                    </li>
+                    <li>
+                      <label for="q8-a3">
+                        <input type="radio" id="q8-a3" name="q8" value="C" />
+                        C. Exclusion
+                      </label>
+                    </li>
+                    <li>
+                      <label for="q8-a4">
+                        <input type="radio" id="q8-a4" name="q8" value="D" />
+                        D. Biological control
+                      </label>
+                    </li>
+                  </ul>
+                </fieldset>
+              </div>
+              <div class="question-block">
+                <h3><span class="sr-only">Question</span>9</h3>
+                <fieldset class="question" name="html-question-one">
+                  <legend>
+                    Sealing cracks and using screens to prevent pests from entering is an example of?
+                </legend>
+                  <ul class="answers-list">
+                    <li>
+                      <label for="q9-a1">
+                        <input type="radio" id="q9-a1" name="q9" value="A" />
+                        A. Cultural control
+                      </label>
+                    </li>
+                    <li>
+                      <label for="q9-a2">
+                        <input type="radio" id="q9-a2" name="q9" value="B" />
+                        B. Physical control
+                      </label>
+                    </li>
+                    <li>
+                      <label for="q9-a3">
+                        <input type="radio" id="q9-a3" name="q9" value="C" />
+                        C. Exclusion
+                      </label>
+                    </li>
+                    <li>
+                      <label for="q9-a4">
+                        <input type="radio" id="q9-a4" name="q9" value="D" />
+                        D. Chemical control
+                      </label>
+                    </li>
+                  </ul>
+                </fieldset>
+              </div>
+              <div class="question-block">
+                <h3><span class="sr-only">Question</span>10</h3>
+                <fieldset class="question" name="html-question-one">
+                  <legend>
+                    Cultural control practices in pest management aim to do which of the following?
+                </legend>
+                  <ul class="answers-list">
+                    <li>
+                      <label for="q10-a1">
+                        <input type="radio" id="q10-a1" name="q10" value="A" />
+                        A. Directly eliminate pests
+                      </label>
+                    </li>
+                    <li>
+                      <label for="q10-a2">
+                        <input type="radio" id="q10-a2" name="q10" value="B" />
+                        B. Create physical barriers
+                      </label>
+                    </li>
+                    <li>
+                      <label for="q10-a3">
+                        <input type="radio" id="q10-a3" name="q10" value="C" />
+                        C. Alter the environment to make it less hospitable for pests
+                      </label>
+                    </li>
+                    <li>
+                      <label for="q10-a4">
+                        <input type="radio" id="q10-a4" name="q10" value="D" />
+                        D. Apply biological agents to combat pests
+                      </label>
+                    </li>
+                  </ul>
+                </fieldset>
+              </div>
+
+          </section>
+          <section role="region" aria-labelledby="feedback">
+            <h2 id="feedback">Feedback</h2>
+            <div class="formrow">
+              <div class="question-block">
+                <label for="css-textarea">Any feedback for the quiz creators:</label>
+              </div>
+              <div class="answer">
+                <textarea id="css-textarea" name="css-questions" rows="5" cols="24"></textarea>
+              </div>
             </div>
           </section>
           <button type="button" onclick="Grade()">Grade</button>
@@ -131,7 +419,7 @@
       </main>
       <footer>
         <address>
-          <a href="https://tigerhacks.missouri.edu/">TigerHacks</a><br />
+          <a href="https://example.com">Agriculture Quiz</a><br />
           Columbia<br />
           Missouri<br />
           USA
