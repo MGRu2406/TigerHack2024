@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="freeCodeCamp Accessibility Quiz practice project" />
+    <title>Accessibility Quiz</title>
+    <link rel="stylesheet" href="survey.css" />
+    <script>
+      function Grade() {
+        const correctAnswers = {
+          q1: "A", // Question 1: 10,000 years ago
+          q2: "D", // Question 2: Southwest Asia
+          q3: "B", // Question 3: Plantation
+          q4: "A", // Question 4: Mediterranean
+          q5: "B"  // Question 5: Urban sprawl
+        };
+
+        let score = 0;
+        let grade = 0;
+        let totalQuestions = 5;
+        let feedback = "";
+
+        // Loop through each question, check if the selected answer is correct
+        for (let question in correctAnswers) {
+          let selected = document.querySelector(`input[name="${question}"]:checked`);
+          if (selected) {
+            if (selected.value === correctAnswers[question]) {
+              score++;
+              feedback += `Question ${question.slice(1)}: Correct!<br>`;
+              score + 10;
+            } else {
+              feedback += `Question ${question.slice(1)}: Incorrect. Correct answer is ${correctAnswers[question]}.<br>`;
+            }
+          } else {
+            feedback += `Question ${question.slice(1)}: No answer selected. Correct answer is ${correctAnswers[question]}.<br>`;
+          }
+        }
+        
+        // Display the score and feedback
+        document.getElementById("answer-display").innerHTML = `You scored ${score} out of ${totalQuestions}.<br><br>${feedback}`;
+      }
+    </script>
+  </head>
+  <body>
+    <div class="content-wrapper">
+      <header>
+        <img id="logo" alt="freeCodeCamp" src="https://cdn.freecodecamp.org/platform/universal/fcc_primary.svg">
+        <h1>Agriculture Quiz!</h1>
+        <nav>
+          <ul>
+            <li><a href="#questions">Questions</a></li>
+            <li><a href="#feedback">Feedback</a></li>
+          </ul>
+        </nav>
+      </header>
+      <main>
+        <form method="post" action="https://freecodecamp.org/practice-project/accessibility-quiz">
+          <section role="region" aria-labelledby="questions">
+            <h2 id="questions">Questions</h2>
+            <!-- Question 1 -->
+            <div class="question-block">
+              <h3>Question 1</h3>
+              <fieldset>
+                <legend>The earliest known domesticated wheat, barley, and rice crops are thought to have originated in Asia?</legend>
+                <ul>
+                  <li><label><input type="radio" name="q1" value="A" /> A. 10,000 years ago</label></li>
+                  <li><label><input type="radio" name="q1" value="B" /> B. 100,000 years ago</label></li>
+                  <li><label><input type="radio" name="q1" value="C" /> C. 1.1 million years ago</label></li>
+                  <li><label><input type="radio" name="q1" value="D" /> D. 1,000 years ago</label></li>
+                </ul>
+              </fieldset>
+            </div>
+            <!-- Question 2 -->
+            <div class="question-block">
+              <h3>Question 2</h3>
+              <fieldset>
+                <legend>Seed agriculture probably reached Europe from?</legend>
+                <ul>
+                  <li><label><input type="radio" name="q2" value="A" /> A. Western India</label></li>
+                  <li><label><input type="radio" name="q2" value="B" /> B. Northern China</label></li>
+                  <li><label><input type="radio" name="q2" value="C" /> C. Ethiopia</label></li>
+                  <li><label><input type="radio" name="q2" value="D" /> D. Southwest Asia</label></li>
+                </ul>
+              </fieldset>
+            </div>
+            <!-- Question 3 -->
+            <div class="question-block">
+              <h3>Question 3</h3>
+              <fieldset>
+                <legend>Which type of agriculture is found primarily in less developed countries?</legend>
+                <ul>
+                  <li><label><input type="radio" name="q3" value="A" /> A. Mediterranean</label></li>
+                  <li><label><input type="radio" name="q3" value="B" /> B. Plantation</label></li>
+                  <li><label><input type="radio" name="q3" value="C" /> C. Truck farming</label></li>
+                  <li><label><input type="radio" name="q3" value="D" /> D. Commercial gardening</label></li>
+                </ul>
+              </fieldset>
+            </div>
+            <!-- Question 4 -->
+            <div class="question-block">
+              <h3>Question 4</h3>
+              <fieldset>
+                <legend>Which is not a form of subsistence agriculture?</legend>
+                <ul>
+                  <li><label><input type="radio" name="q4" value="A" /> A. Mediterranean</label></li>
+                  <li><label><input type="radio" name="q4" value="B" /> B. Shifting cultivation</label></li>
+                  <li><label><input type="radio" name="q4" value="C" /> C. Pastoral nomadism</label></li>
+                  <li><label><input type="radio" name="q4" value="D" /> D. Intensive</label></li>
+                </ul>
+              </fieldset>
+            </div>
+            <!-- Question 5 -->
+            <div class="question-block">
+              <h3>Question 5</h3>
+              <fieldset>
+                <legend>The decline in the amount of farmland can best be described as a consequence of?</legend>
+                <ul>
+                  <li><label><input type="radio" name="q5" value="A" /> A. Push/pull economic factors</label></li>
+                  <li><label><input type="radio" name="q5" value="B" /> B. Urban sprawl</label></li>
+                  <li><label><input type="radio" name="q5" value="C" /> C. Climate change</label></li>
+                  <li><label><input type="radio" name="q5" value="D" /> D. Demographic transition</label></li>
+                </ul>
+              </fieldset>
+            </div>
+          </section>
+          <button type="button" onclick="Grade()">Grade</button>
+          <button type="submit">Send</button>
+          <p id="answer-display" style="margin-top: 10px; font-weight: bold;"></p>
+        </form>
+      </main>
+      <footer>
+        <address>
+          <a href="https://tigerhacks.missouri.edu/">TigerHacks</a><br />
+          Columbia<br />
+          Missouri<br />
+          USA
+        </address>
+      </footer>
+    </div>
+  </body>
+</html>
